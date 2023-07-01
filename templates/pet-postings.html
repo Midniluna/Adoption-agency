@@ -1,0 +1,39 @@
+{% extends 'index.html' %} {% block title %}Postings Homepage{% endblock %} {%
+block content %}
+
+<h1 class="text-center">Pet Adoption Agency</h1>
+<br />
+{% for msg in get_flashed_messages() %}
+<div class="alert alert-success" role="alert">{{msg}}</div>
+{% endfor %}
+<div class="text-center">
+	<a href="/add" class="btn btn-primary">Add a Pet</a>
+</div>
+<section class="pet-postings">
+	<div class="d-flex flex-wrap justify-content-around">
+		{% for pet in pets %}
+		<!-- I know they said to add an edit button but I find clicking into the pet itself a lot more convenient in-app. It'd just be <a class="btn" src=/{{pet_id}}>Edit</a> but I'd have to make it look nice lol-->
+		<a href="/{{pet.id}}">
+			<div class="posting posting-wrapper justify-content-center">
+				<div class="pet-img-wrapper">
+					<img
+						src="{{pet.photo_url}}"
+						alt="Photo of {{pet.species}}"
+						class="pet mx-auto d-block"
+					/>
+				</div>
+
+				<span class="text-info">{{pet.name}}</span>
+				<b class="text-muted"
+					>is{% if pet.available %} available! {% else %} not available! {%
+					endif %}</b
+				>
+				<!-- <h3 class="text-center"><b>Name:</b> {{pet.name}}</h3>
+					<h4 class="text-center"><b>Species:</b> {{pet.species}}</h4> -->
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+</section>
+
+{% endblock %}

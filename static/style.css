@@ -1,0 +1,58 @@
+body {
+	margin: 10px;
+	background-color: bisque;
+}
+
+h4 {
+	word-wrap: break-word;
+}
+
+input {
+	max-width: 50%;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}
+.pet-postings {
+	max-width: 80%;
+	min-width: 280px;
+	margin: 0 auto;
+	margin-top: 40px;
+	background-color: rgb(252, 242, 229);
+}
+
+.posting {
+	padding: 15px;
+	max-width: 280px;
+}
+
+.form-control {
+	width: 50%;
+}
+
+/* .notes {
+	margin-left: 10%;
+	margin-right: 10%;
+} */
+
+a:hover {
+	text-decoration: none;
+}
+
+.pet-img-wrapper {
+	position: relative;
+	overflow: hidden;
+	width: 250px;
+	height: 250px;
+	border-radius: 5px;
+}
+.pet-img-wrapper img {
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
