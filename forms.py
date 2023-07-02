@@ -19,30 +19,13 @@ class AddPetForm(FlaskForm):
     name = StringField("Pet Name", validators=[InputRequired()], render_kw={"placeholder" : "Please Enter Name of Pet"})
     species = SelectField("Pet Species", validators=[InputRequired()], choices=species, render_kw={"placeholder" : "Please Enter Species of Pet"})
     photo_url = StringField("Enter Photo Url", validators=[Optional(), URL()], render_kw={"placeholder" : "(Optional)"})
-    age = IntegerField("Pet Age", validators=[Optional(), NumberRange(0, 30)], render_kw={"placeholder" : "Enter an age between 0-30 (Optional)"})
+    age = IntegerField("Pet Age", validators=[Optional(), NumberRange(0, 30)], render_kw={"placeholder" : "Enter an age (in years) between 0-30 (Optional)"})
     notes = TextAreaField("Additional Notes", validators=[Optional()], render_kw={"placeholder" : "(Optional)"})
 
 class EditPetForm(FlaskForm):
     photo_url = StringField("Enter Photo Url", validators=[Optional(), URL()], render_kw={"placeholder" : "(Optional)"})
-    age = IntegerField("Pet Age", validators=[Optional(), NumberRange(0, 30)], render_kw={"placeholder" : "Enter an age between 0-30 (Optional)"})
+    age = IntegerField("Pet Age", validators=[Optional(), NumberRange(0, 30)], render_kw={"placeholder" : "Enter an age (in years) between 0-30 (Optional)"})
     available = SelectField("Is the pet still available?", choices=[(True, "Yes"), (False, "No")], coerce=coerce_bool)
     notes = TextAreaField("Edit Notes", validators=[Optional()], render_kw={"placeholder" : "(Optional)"})
 
 
-
-# EXAMPLE FORMS
-
-# class AddSnackForm(FlaskForm):
-#     """Form for adding snacks."""
-
-#     name = StringField("Snack Name")
-#     price = FloatField("Price in USD")
-
-
-# class UserForm(FlaskForm):
-#     """Form for adding/editing friend."""
-
-#     name = StringField("Name",
-#                        validators=[InputRequired()])
-#     email = StringField("Email Address",
-#                         validators=[Optional(), Email()])

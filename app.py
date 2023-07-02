@@ -41,7 +41,7 @@ def add_pet():
         """Submit a new pet to the database"""
 
         if (form.photo_url.data == ""):
-            # Will allow the pet model to utilize the default value if nothing is entered
+            # Will allow the pet model to utilize the default value if nothing is entered, otherwise it commits as an empty string
             form.photo_url.data = None
 
         name = form.name.data
@@ -69,25 +69,28 @@ def edit_pet(pet_id):
     if form.validate_on_submit():
         """Commit form inputs and update pet data"""
         pet = Pet.query.get_or_404(pet_id)
-        # embed()
+
         # I need to ask if there's a better way to write this
+        # UPDATE: I asked, Ian if you're reading this these commented out parts are some of my various attempts
 
         # data = [(k, v) for k, v in form.data.items() if k != "csrf_token" and v != '' and v != None]
 
+        ### Attemt 1 ###
         # for (k, v) in data:
         #     print(k)
         #     print(v)
+        #     embed()
         #     pet.k = v
         #     db.session.commit()
             
             # print(pet.k)
 
-
-        
+        ### Attempt 2 ###
         # for {k: v} in data:
         #     pet.k = v
         #     db.session.commit()
 
+        # Only update the database if the fields aren't blank
         if (form.photo_url.data != ""):
             pet.photo_url = form.photo_url.data
 
@@ -101,11 +104,7 @@ def edit_pet(pet_id):
         
         db.session.commit()
 
-        # flash(f"Edited {pet.name}!")
-        # return render_template("edit-pet.html", form=form, pet=pet)
+        flash(f"Edited {pet.name}!")
         return redirect('/')
     else:
         return render_template("edit-pet.html", form=form, pet=pet)
-
-
-# name species photo_url age notes
