@@ -15,5 +15,4 @@ c = Pet(name="Polite Maxwell", species="dog", photo_url="https://i.imgur.com/YOo
 db.session.add(a)
 db.session.add(b)
 db.session.add(c)
-db.session.add(d)
 db.session.commit()
